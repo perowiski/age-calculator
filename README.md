@@ -2,6 +2,8 @@
 
 Build and deploy a very simple API that does the following
 
+https://app.codacy.com/project/badge/Grade/cba8fd0874ac4f569f4f880e473cbac9
+
 1.  Calculate and return the age of a person, given their date of birth (dob) as query parameters to `GET /howold`
 
 2.  Limit calls to `GET /howold` and prevent excessive usage from potentially ill-configured or malicious integrators. Only allow a maximum of 3 calls per second for each API client/caller
