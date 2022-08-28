@@ -20,11 +20,7 @@ public class RateLimiterFilter implements Filter {
     public RateLimiterFilter(){
         super();
         requestCountsPerIpAddress = Caffeine.newBuilder().
-                expireAfterWrite(1, TimeUnit.SECONDS).build(new CacheLoader<String, Integer>() {
-                    public Integer load(String key) {
-                        return 0;
-                    }
-                });
+                expireAfterWrite(1, TimeUnit.SECONDS).build(key -> 0);
     }
 
     @Override
