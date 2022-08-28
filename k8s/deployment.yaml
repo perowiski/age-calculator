@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: age-calculator-deployment
+  labels:
+    app: age-calculator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: age-calculator
+  template:
+    metadata:
+      labels:
+        app: age-calculator
+    spec:
+      containers:
+        - name: age-calculator
+          image: peterabcxyz/talentql:1.0
+          ports:
+            - containerPort: 8080
