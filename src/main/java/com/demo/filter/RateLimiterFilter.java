@@ -27,6 +27,7 @@ public class RateLimiterFilter implements Filter {
         HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
         String clientIpAddress = getClientIP((HttpServletRequest) servletRequest);
         if(isMaximumRequestsPerSecondExceeded(clientIpAddress)){
+            httpServletResponse.setContentType("application/json");
             httpServletResponse.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
             httpServletResponse.getWriter().write("Too many requests");
             return;

@@ -1,6 +1,7 @@
 package com.demo.controller;
 
 import com.demo.service.AgeCalculatorService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +17,7 @@ public class AgeCalculatorController {
         this.ageCalculatorService = ageCalculatorService;
     }
 
-    @GetMapping("/howold")
+    @GetMapping(value = "/howold", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> calculateAge(@RequestParam("dob") Timestamp dob){
         return ResponseEntity.ok(String.valueOf(ageCalculatorService.calculateAge(dob)));
     }
