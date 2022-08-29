@@ -1,6 +1,7 @@
 package com.demo.controller;
 
 import com.demo.service.AgeCalculatorService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +20,10 @@ public class AgeCalculatorController {
     }
 
     @GetMapping("/howold")
-    public ResponseEntity<String> calculateAge(@RequestParam(name = "dob") String dob){
-        if (!isValidTimestamp(dob)){
+    public ResponseEntity<String> calculateAge(@RequestParam(name = "dob", required = false) String dob){
+        if(StringUtils.isEmpty(dob)){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).contentType(MediaType.APPLICATION_JSON).body("dob is required");
+        } else if (!isValidTimestamp(dob)){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).contentType(MediaType.APPLICATION_JSON).body("Invalid timestamp, supported format is yyyy:MM:dd HH:mm:ss");
         }
         return ResponseEntity.ok(String.valueOf(ageCalculatorService.calculateAge(dob)));
