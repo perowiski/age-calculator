@@ -1,8 +1,8 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6ec19482eea94263b134c8b00875ba22)](https://www.codacy.com/gh/perowiski/age-calculator/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=perowiski/age-calculator&amp;utm_campaign=Badge_Grade)
+
 # Backend Assessment
 
 Build and deploy a very simple API that does the following
-
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6ec19482eea94263b134c8b00875ba22)](https://www.codacy.com/gh/perowiski/age-calculator/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=perowiski/age-calculator&amp;utm_campaign=Badge_Grade)
 
 1.  Calculate and return the age of a person, given their date of birth (dob) as query parameters to `GET /howold`
 
