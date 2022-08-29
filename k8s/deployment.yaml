@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: age-calculator
-          image: peterabcxyz/talentql:1.0
+          image: peterabcxyz/talentql:1.3
           ports:
             - containerPort: 8080
