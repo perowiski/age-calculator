@@ -1,6 +1,5 @@
 package com.demo.controller;
 
-import com.demo.config.TimestampAdvice;
 import com.demo.service.AgeCalculatorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +14,7 @@ import java.sql.Timestamp;
 @RestController
 public class AgeCalculatorController {
 
-    private final Logger logger = LoggerFactory.getLogger(TimestampAdvice.class);
+    private final Logger logger = LoggerFactory.getLogger(AgeCalculatorController.class);
     private final AgeCalculatorService ageCalculatorService;
 
     public AgeCalculatorController(AgeCalculatorService ageCalculatorService){
@@ -23,8 +22,19 @@ public class AgeCalculatorController {
     }
 
     @GetMapping(value = "/howold", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> calculateAge(@RequestParam("dob") Timestamp dob){
-        logger.info("Controller Timestamp: {}", dob.toString());
+    public ResponseEntity<String> calculateAge(@RequestParam("dob") String dob){
+        logger.info("Timestamp: {}", dob);
+        if(!isValidTimestamp(dob)){
+            return ResponseEntity.badRequest().body("Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]]");
+        }
         return ResponseEntity.ok(String.valueOf(ageCalculatorService.calculateAge(dob)));
+    }
+
+    private boolean isValidTimestamp(String dob){
+        try{
+            Timestamp.valueOf(dob);
+            return true;
+        }catch (Exception ex){}
+        return false;
     }
 }

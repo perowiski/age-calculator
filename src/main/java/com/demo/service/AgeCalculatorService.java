@@ -8,7 +8,7 @@ import java.time.Period;
 
 @Service
 public class AgeCalculatorService {
-    public int calculateAge(Timestamp dob) {
-        return Period.between(dob.toLocalDateTime().toLocalDate(), LocalDate.now()).getYears();
+    public int calculateAge(String dob) {
+        return Period.between(Timestamp.valueOf(dob).toLocalDateTime().toLocalDate(), LocalDate.now()).getYears();
     }
 }

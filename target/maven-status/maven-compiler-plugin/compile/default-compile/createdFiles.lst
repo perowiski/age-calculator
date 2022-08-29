@@ -1,5 +1,3 @@
-com/demo/config/TimestampAdvice$1.class
-com/demo/config/TimestampAdvice.class
 com/demo/controller/AgeCalculatorController.class
 com/demo/filter/RateLimiterFilter.class
 com/demo/Application.class
